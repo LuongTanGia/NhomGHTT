@@ -18,7 +18,7 @@ app.use(
 
 // connect database
 const URI = process.env.MONGODB_URL;
-const connectDB = async () => {
+const connectDB = async() => {
     try {
         mongoose.set("strictQuery", false);
         await mongoose.connect(URI);
@@ -34,6 +34,7 @@ connectDB();
 app.use("/user", require("./routers/userRouter"));
 app.use("/api", require("./routers/categoryRouter"));
 app.use("/api", require("./routers/upload"));
+app.use("/api", require("./routers/productRouter"));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
