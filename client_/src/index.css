@@ -34,5 +34,9 @@ button {
     background: transparent;
     cursor: pointer;
 }
-/* -------------------- Header------------------------- */
+/* -------------------- Header ------------------------- */
 @import url("./components/headers/header.css");
+/* -------------------- Product ------------------------- */
+@import url("./components/mainpages/products/products.css");
+/* -------------------- Detail Product ------------------------- */
+@import url("./components/mainpages/detailProduct/detailproduct.css");
