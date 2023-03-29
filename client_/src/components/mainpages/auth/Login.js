@@ -18,7 +18,7 @@ function Login() {
         try {
             await axios.post("/user/login", { ...user });
 
-            localStorage.setItem("fistLogin", true);
+            localStorage.setItem("firstLogin", true);
 
             window.location.href = "/";
         } catch (err) {
