@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { GlobalState } from "../../GlobalState";
 import Menu from "./icon/bars-solid.svg";
 import Close from "./icon//times.svg";

@@ -3,11 +3,6 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 export default class PaypalButton extends React.Component {
     render() {
-        const onSuccess = (payment) => {
-            console.log("The payment was succeeded!", payment);
-            this.props.tranSuccess(payment);
-        };
-
         const onCancel = (data) => {
             console.log("The payment was cancelled!", data);
         };
@@ -58,8 +53,29 @@ export default class PaypalButton extends React.Component {
                             ],
                         });
                     }}
+                    onApprove={(data, actions) => {
+                        return actions.order.capture().then((details) => {
+                            const name = details.payer.name.given_name;
+                            const address = details.payer;
+                            const transactionId =
+                                details.purchase_units[0].payments.captures[0]
+                                    .id;
+                            data.paymentID = transactionId;
+                            const mergedObj = Object.assign({}, data, address);
+                            console.log(mergedObj); // { a: 1, b: 2, c: 3, d: 4 }
+                            console.log(
+                                "The payment was succeeded!",
+                                mergedObj,
+                                address
+                            );
+                            this.props.tranSuccess(mergedObj);
+                        });
+                    }}
                     onError={onError}
-                    onSuccess={onSuccess}
+                    // onSuccess={(data) => {
+                    //     console.log("The payment was succeeded!", data);
+                    //     this.props.tranSuccess(data);
+                    // }}
                     onCancel={onCancel}
                     style={style}
                 />

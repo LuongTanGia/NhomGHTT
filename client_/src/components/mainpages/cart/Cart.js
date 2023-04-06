@@ -7,6 +7,7 @@ function Cart() {
     const state = useContext(GlobalState);
     const [cart, setCart] = state.userAPI.cart;
     const [token] = state.token;
+    const [callback, setCallback] = state.userAPI.callback;
     const [total, setTotal] = useState(0);
 
     useEffect(() => {
@@ -21,7 +22,7 @@ function Cart() {
         getTotal();
     }, [cart]);
 
-    const addToCart = async () => {
+    const addToCart = async (cart) => {
         await axios.patch(
             "/user/addcart",
             { cart },
@@ -37,8 +38,9 @@ function Cart() {
                 item.quantity += 1;
             }
         });
+
         setCart([...cart]);
-        addToCart();
+        addToCart(cart);
     };
 
     const decrement = (id) => {
@@ -49,24 +51,39 @@ function Cart() {
                     : (item.quantity -= 1);
             }
         });
+
         setCart([...cart]);
-        addToCart();
+        addToCart(cart);
     };
 
     const removeProduct = (id) => {
-        if (window.confirm("Do you want to delete this product ?")) {
+        if (window.confirm("Do you want to delete this product?")) {
             cart.forEach((item, index) => {
                 if (item._id === id) {
                     cart.splice(index, 1);
                 }
             });
+
             setCart([...cart]);
-            addToCart();
+            addToCart(cart);
         }
     };
 
     const tranSuccess = async (payment) => {
-        console.log(payment);
+        const { paymentID, address } = payment;
+
+        await axios.post(
+            "/api/payment",
+            { cart, paymentID, address },
+            {
+                headers: { Authorization: token },
+            }
+        );
+
+        setCart([]);
+        addToCart([]);
+        alert("You have successfully placed an order.");
+        setCallback(!callback);
     };
 
     if (cart.length === 0)
@@ -90,14 +107,14 @@ function Cart() {
                         <p>{product.content}</p>
 
                         <div className="amount">
-                            <button onClick={() => increment(product._id)}>
-                                {" "}
-                                +{" "}
-                            </button>
-                            <span>{product.quantity}</span>
                             <button onClick={() => decrement(product._id)}>
                                 {" "}
                                 -{" "}
+                            </button>
+                            <span>{product.quantity}</span>
+                            <button onClick={() => increment(product._id)}>
+                                {" "}
+                                +{" "}
                             </button>
                         </div>
 
@@ -113,10 +130,7 @@ function Cart() {
 
             <div className="total">
                 <h3>Total: $ {total}</h3>
-
-                <div className="paypal">
-                    <PaypalButton total={total} tranSuccess={tranSuccess} />
-                </div>
+                <PaypalButton total={total} tranSuccess={tranSuccess} />
             </div>
         </div>
     );
