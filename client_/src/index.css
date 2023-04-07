@@ -48,3 +48,5 @@ button {
 @import url("./components/mainpages/history/history.css");
 /* -------------------- Category ----------------------- */
 @import url("./components/mainpages/categories/categories.css");
+/* -------------------- CreateProduct ----------------------- */
+@import url("./components/mainpages/createProduct/createProduct.css");
