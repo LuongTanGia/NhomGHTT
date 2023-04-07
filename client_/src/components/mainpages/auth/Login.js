@@ -28,8 +28,8 @@ function Login() {
 
     return (
         <div className="login-page">
-            <h2>Login</h2>
             <form onSubmit={loginSubmit}>
+                <h2>Login</h2>
                 <input
                     type="email"
                     name="email"
@@ -38,15 +38,17 @@ function Login() {
                     value={user.email}
                     onChange={onChangeInput}
                 />
+
                 <input
                     type="password"
                     name="password"
                     required
+                    autoComplete="on"
                     placeholder="Password"
                     value={user.password}
-                    autoComplete="on"
                     onChange={onChangeInput}
                 />
+
                 <div className="row">
                     <button type="submit">Login</button>
                     <Link to="/register">Register</Link>
