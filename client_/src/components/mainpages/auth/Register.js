@@ -19,7 +19,7 @@ function Register() {
         try {
             await axios.post("/user/register", { ...user });
 
-            localStorage.setItem("firstLogin", true);
+            localStorage.setItem("fistLogin", true);
 
             window.location.href = "/";
         } catch (err) {
@@ -29,8 +29,8 @@ function Register() {
 
     return (
         <div className="login-page">
+            <h2>Register</h2>
             <form onSubmit={registerSubmit}>
-                <h2>Register</h2>
                 <input
                     type="text"
                     name="name"
@@ -39,7 +39,6 @@ function Register() {
                     value={user.name}
                     onChange={onChangeInput}
                 />
-
                 <input
                     type="email"
                     name="email"
@@ -48,17 +47,15 @@ function Register() {
                     value={user.email}
                     onChange={onChangeInput}
                 />
-
                 <input
                     type="password"
                     name="password"
                     required
-                    autoComplete="on"
                     placeholder="Password"
                     value={user.password}
+                    autoComplete="on"
                     onChange={onChangeInput}
                 />
-
                 <div className="row">
                     <button type="submit">Register</button>
                     <Link to="/login">Login</Link>

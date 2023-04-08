@@ -12,8 +12,7 @@ const userCtrl = {
             if (user)
                 return res
                     .status(400)
-                    .json({ msg: "The email already exists." });
-
+                    .json({ msg: "The email already exists" });
             if (password.length < 6)
                 return res
                     .status(400)
@@ -26,21 +25,22 @@ const userCtrl = {
                 email,
                 password: passwordHash,
             });
+            // Save MongoDB
 
-            // Save mongodb
             await newUser.save();
 
-            // Then create jsonwebtoken to authentication
+            // Create jsonwebtoken to authentication
             const accesstoken = createAccessToken({ id: newUser._id });
             const refreshtoken = createRefreshToken({ id: newUser._id });
 
             res.cookie("refreshtoken", refreshtoken, {
                 httpOnly: true,
                 path: "/user/refresh_token",
-                maxAge: 7 * 24 * 60 * 60 * 1000, // 7d
             });
-
+            // res.json({ password, passwordHash });
+            // res.json(newUser);
             res.json({ accesstoken });
+            // res.json({ msg: "Register Success!!" });
         } catch (err) {
             return res.status(500).json({ msg: err.message });
         }
@@ -57,16 +57,17 @@ const userCtrl = {
             if (!isMatch)
                 return res.status(400).json({ msg: "Incorrect password." });
 
-            // If login success , create access token and refresh token
+            // If login success, create access token and refresh token
+
             const accesstoken = createAccessToken({ id: user._id });
             const refreshtoken = createRefreshToken({ id: user._id });
 
             res.cookie("refreshtoken", refreshtoken, {
                 httpOnly: true,
                 path: "/user/refresh_token",
-                maxAge: 7 * 24 * 60 * 60 * 1000, // 7d
             });
-
+            // res.json({ password, passwordHash });
+            // res.json(newUser);
             res.json({ accesstoken });
         } catch (err) {
             return res.status(500).json({ msg: err.message });
@@ -96,12 +97,12 @@ const userCtrl = {
                         return res
                             .status(400)
                             .json({ msg: "Please Login or Register" });
-
                     const accesstoken = createAccessToken({ id: user.id });
-
                     res.json({ accesstoken });
                 }
             );
+
+            res.json({ rf_token });
         } catch (err) {
             return res.status(500).json({ msg: err.message });
         }
@@ -111,7 +112,6 @@ const userCtrl = {
             const user = await Users.findById(req.user.id).select("-password");
             if (!user)
                 return res.status(400).json({ msg: "User does not exist." });
-
             res.json(user);
         } catch (err) {
             return res.status(500).json({ msg: err.message });
@@ -130,7 +130,7 @@ const userCtrl = {
                 }
             );
 
-            return res.json({ msg: "Added to cart" });
+            return res.json({ msg: "Add to cart" });
         } catch (err) {
             return res.status(500).json({ msg: err.message });
         }

@@ -9,7 +9,6 @@ import DetailProduct from "./detailProduct/DetailProduct";
 import OrderHistory from "./history/OrderHistory";
 import OrderDetails from "./history/OrderDetails";
 import Categories from "./categories/Categories";
-import CreateProduct from "./createProduct/CreateProduct";
 
 import { GlobalState } from "../../GlobalState";
 
@@ -34,14 +33,6 @@ function Pages() {
             <Route
                 path="/category"
                 element={isAdmin ? <Categories /> : <NotFound />}
-            />
-            <Route
-                path="/create_product"
-                element={isAdmin ? <CreateProduct /> : <NotFound />}
-            />
-            <Route
-                path="/edit_product/:id"
-                element={isAdmin ? <CreateProduct /> : <NotFound />}
             />
             <Route
                 path="/history"
