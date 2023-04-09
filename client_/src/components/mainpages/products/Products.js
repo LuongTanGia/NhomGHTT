@@ -23,11 +23,13 @@ function Products() {
         setProducts([...products]);
     };
 
-    const deleteProduct = async(id, public_id) => {
+    const deleteProduct = async (id, public_id) => {
         try {
             setLoading(true);
             const destroyImg = axios.post(
-                "/api/destroy", { public_id }, {
+                "/api/destroy",
+                { public_id },
+                {
                     headers: { Authorization: token },
                 }
             );
@@ -60,51 +62,43 @@ function Products() {
     };
 
     if (loading)
-        return ( <
-            div >
-            <
-            Loading / >
-            <
-            /div>
+        return (
+            <div>
+                <Loading />
+            </div>
         );
-    return ( <
-        > {!isAdmin && < Slider / > }
-
-        <
-        Filters / >
-
-        {
-            isAdmin && ( <
-                div className = "delete-all" >
-                <
-                span > Select all < /span> <
-                input type = "checkbox"
-                checked = { isCheck }
-                onChange = { checkAll }
-                /> <
-                button onClick = { deleteAll } > Delete ALL < /button> <
-                /div>
-            )
-        }
-
-        <
-        div className = "products" > {
-            products.map((product) => {
-                return ( <
-                    ProductItem key = { product._id }
-                    product = { product }
-                    isAdmin = { isAdmin }
-                    deleteProduct = { deleteProduct }
-                    handleCheck = { handleCheck }
-                    />
-                );
-            })
-        } <
-        /div>
-
-        <
-        LoadMore / > { products.length === 0 && < Loading / > } <
-        />
+    return (
+        <>
+            {" "}
+            {!isAdmin && <Slider />}
+            <Filters />
+            {isAdmin && (
+                <div className="delete-all">
+                    <span> Select all </span>{" "}
+                    <input
+                        type="checkbox"
+                        checked={isCheck}
+                        onChange={checkAll}
+                    />{" "}
+                    <button onClick={deleteAll}> Delete ALL </button>{" "}
+                </div>
+            )}
+            <div className="products">
+                {" "}
+                {products.map((product) => {
+                    return (
+                        <ProductItem
+                            key={product._id}
+                            product={product}
+                            isAdmin={isAdmin}
+                            deleteProduct={deleteProduct}
+                            handleCheck={handleCheck}
+                        />
+                    );
+                })}{" "}
+            </div>
+            <LoadMore /> {products.length === 0 && <Loading />}{" "}
+        </>
     );
 }
 
