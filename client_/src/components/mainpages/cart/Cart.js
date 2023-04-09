@@ -88,49 +88,45 @@ function Cart() {
     if (cart.length === 0)
         return (
             <h2 style={{ textAlign: "center", fontSize: "5rem" }}>
-                Cart Empty
+                Cart Empty{" "}
             </h2>
         );
 
     return (
         <div>
+            {" "}
             {cart.map((product) => (
                 <div className="detail cart" key={product._id}>
                     <img src={product.images.url} alt="" />
-
                     <div className="box-detail">
-                        <h2>{product.title}</h2>
-
-                        <h3>$ {product.price * product.quantity}</h3>
-                        <p>{product.description}</p>
-                        <p>{product.content}</p>
-
+                        <h2> {product.title} </h2>
+                        <h5> $ {product.price * product.quantity} </h5>{" "}
+                        <p> {product.description} </p>{" "}
+                        <p> {product.content} </p>
                         <div className="amount">
                             <button onClick={() => decrement(product._id)}>
                                 {" "}
                                 -{" "}
-                            </button>
-                            <span>{product.quantity}</span>
+                            </button>{" "}
+                            <span> {product.quantity} </span>{" "}
                             <button onClick={() => increment(product._id)}>
                                 {" "}
                                 +{" "}
-                            </button>
+                            </button>{" "}
                         </div>
-
                         <div
                             className="delete"
                             onClick={() => removeProduct(product._id)}
                         >
-                            X
-                        </div>
-                    </div>
+                            X{" "}
+                        </div>{" "}
+                    </div>{" "}
                 </div>
             ))}
-
             <div className="total">
-                <h3>Total: $ {total}</h3>
-                <PaypalButton total={total} tranSuccess={tranSuccess} />
-            </div>
+                <h3> Total: $ {total} </h3>{" "}
+                <PaypalButton total={total} tranSuccess={tranSuccess} />{" "}
+            </div>{" "}
         </div>
     );
 }

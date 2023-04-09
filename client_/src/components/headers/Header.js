@@ -20,7 +20,7 @@ function Header() {
 
         window.location.href = "/";
     };
-
+    console.log(state);
     const adminRouter = () => {
         return (
             <>
@@ -50,46 +50,54 @@ function Header() {
     };
 
     return (
-        <header>
-            <div className="menu">
-                <img src={Menu} alt="" width="30" />
-            </div>
+        <header class="p-3 bg-dark text-white">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <div className="menu">
+                        <img src={Menu} alt="" width="30" />
+                    </div>
+                    <div className="logo">
+                        <h1>
+                            <Link to="/">{isAdmin ? "Admin" : "Shop MP"}</Link>
+                        </h1>
+                    </div>
 
-            <div className="logo">
-                <h1>
-                    <Link to="/">{isAdmin ? "Admin" : "Shop MP"}</Link>
-                </h1>
-            </div>
+                    <ul>
+                        <li>
+                            <Link to="/">{isAdmin ? "Products" : "Shop"}</Link>
+                        </li>
 
-            <ul>
-                <li>
-                    <Link to="/">{isAdmin ? "Products" : "Shop"}</Link>
-                </li>
+                        {isAdmin && adminRouter()}
+                        {isLogged ? (
+                            loggedRouter()
+                        ) : (
+                            <li>
+                                <Link to="/login">Login ~ Register</Link>
+                            </li>
+                        )}
 
-                {isAdmin && adminRouter()}
-                {isLogged ? (
-                    loggedRouter()
-                ) : (
-                    <li>
-                        <Link to="/login">Login ~ Register</Link>
-                    </li>
-                )}
+                        <li>
+                            <img
+                                src={Close}
+                                alt=""
+                                width="30"
+                                className="menu"
+                            />
+                        </li>
+                    </ul>
 
-                <li>
-                    <img src={Close} alt="" width="30" className="menu" />
-                </li>
-            </ul>
-
-            {isAdmin ? (
-                ""
-            ) : (
-                <div className="cart-icon">
-                    <span>{cart.length}</span>
-                    <Link to="/cart">
-                        <img src={Cart} alt="" width="30" />
-                    </Link>
+                    {isAdmin ? (
+                        ""
+                    ) : (
+                        <div className="cart-icon">
+                            <Link to="/cart">
+                                <span>{cart.length}</span>
+                                <img src={Cart} alt="" width="30" />
+                            </Link>
+                        </div>
+                    )}
                 </div>
-            )}
+            </div>
         </header>
     );
 }

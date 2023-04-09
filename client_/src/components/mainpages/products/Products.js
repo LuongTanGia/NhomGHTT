@@ -5,6 +5,7 @@ import Loading from "../utils/loading/Loading";
 import axios from "axios";
 import Filters from "./Filters";
 import LoadMore from "./LoadMore";
+import Slider from "./Slider";
 
 function Products() {
     const state = useContext(GlobalState);
@@ -68,21 +69,22 @@ function Products() {
         );
     return (
         <>
+            {" "}
+            {!isAdmin && <Slider />}
             <Filters />
-
             {isAdmin && (
                 <div className="delete-all">
-                    <span>Select all</span>
+                    <span> Select all </span>{" "}
                     <input
                         type="checkbox"
                         checked={isCheck}
                         onChange={checkAll}
-                    />
-                    <button onClick={deleteAll}>Delete ALL</button>
+                    />{" "}
+                    <button onClick={deleteAll}> Delete ALL </button>{" "}
                 </div>
             )}
-
             <div className="products">
+                {" "}
                 {products.map((product) => {
                     return (
                         <ProductItem
@@ -93,11 +95,9 @@ function Products() {
                             handleCheck={handleCheck}
                         />
                     );
-                })}
+                })}{" "}
             </div>
-
-            <LoadMore />
-            {products.length === 0 && <Loading />}
+            <LoadMore /> {products.length === 0 && <Loading />}{" "}
         </>
     );
 }
