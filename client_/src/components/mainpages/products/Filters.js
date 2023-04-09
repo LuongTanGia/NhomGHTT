@@ -15,34 +15,45 @@ function Filters() {
     };
 
     return (
-        <div className="filter_menu">
-            <div className="row">
+        <>
+            <div className="filter_menu">
                 <span>Filters: </span>
-                <select
-                    name="category"
-                    value={category}
-                    onChange={handleCategory}
-                >
-                    <option value="">All Products</option>
-                    {categories.map((category) => (
-                        <option
-                            value={"category=" + category._id}
-                            key={category._id}
-                        >
-                            {category.name}
-                        </option>
-                    ))}
-                </select>
-            </div>
+                <div className="row">
+                    <select
+                        name="category"
+                        value={category}
+                        onChange={handleCategory}
+                    >
+                        <option value="">All Products</option>
+                        {categories.map((category) => (
+                            <option
+                                value={"category=" + category._id}
+                                key={category._id}
+                            >
+                                {category.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
 
-            <input
+                {/* <input
                 type="text"
                 value={search}
                 placeholder="Enter your search!"
                 onChange={(e) => setSearch(e.target.value.toLowerCase())}
-            />
+            /> */}
 
-            <div className="row sort">
+                <input
+                    id="form1"
+                    class="form-control"
+                    type="text"
+                    value={search}
+                    placeholder="Enter your search!"
+                    onChange={(e) => setSearch(e.target.value.toLowerCase())}
+                />
+            </div>
+
+            <div className="sort">
                 <span>Sort By: </span>
                 <select value={sort} onChange={(e) => setSort(e.target.value)}>
                     <option value="">Newest</option>
@@ -52,7 +63,7 @@ function Filters() {
                     <option value="sort=price">Price: Low-Hight</option>
                 </select>
             </div>
-        </div>
+        </>
     );
 }
 

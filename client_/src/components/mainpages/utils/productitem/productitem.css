@@ -1,7 +1,8 @@
-.product_card {
+/* .product_card {
     max-width: 300px;
     overflow: hidden;
-    height: 500px;
+    height: 700px;
+    max-height: 550px;
     padding: 15px;
     box-shadow: 0 0 15px #ddd;
     margin: 10px 0;
@@ -33,15 +34,16 @@
     height: 70px;
     overflow: hidden;
     color: #323232;
-}
+}*/
 .row_btn {
     width: 100%;
     margin-top: 10px;
     display: flex;
-    justify-content: space-between;
+    margin-right: 20px;
+    justify-content: flex-end;
 }
 .row_btn a {
-    width: 50%;
+    width: 25%;
     text-align: center;
     text-transform: uppercase;
     color: white;
@@ -57,67 +59,136 @@
     background: teal;
     margin-left: 5px;
 }
-.product_card {
-    max-width: 300px;
+/* ------------------------------------------- */
+
+.wrapper {
+    position: relative;
+    height: 420px;
+    /* width: 654px; */
+    margin: 50px auto;
+    border-radius: 7px 7px 7px 7px;
+    /* VIA CSS MATIC https://goo.gl/cIbnS */
+    -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
     overflow: hidden;
-    height: 500px;
-    padding: 15px;
-    box-shadow: 0 0 15px #ddd;
-    margin: 10px 0;
+}
+
+.product-img {
+    position: absolute;
+    float: left;
+
+    height: 420px;
+    width: 327px;
+    transition: all 0.5s ease-in;
+}
+
+.product-img img {
+    border-radius: 7px;
+    z-index: 100000;
+    width: 100%;
+    height: 100%;
+}
+.wrapper:hover {
+    /* width: 654px; */
+}
+.wrapper:hover .product-img {
+    transform: translate(100%);
+}
+
+.product-info {
+    float: left;
+    height: 420px;
+    width: 327px;
+    border-radius: 0 7px 10px 7px;
+    background-color: #ffffff;
+}
+
+.product-text {
+    height: 300px;
+    width: 327px;
+}
+
+.product-text h1 {
+    margin: 0 0 0 38px;
+    padding-top: 52px;
+    font-size: 34px;
+    color: #474747;
+}
+
+.product-text h1,
+.product-price-btn p {
+    font-family: "Bentham", serif;
+}
+
+.product-text h2 {
+    margin: 0 0 47px 38px;
+    font-size: 13px;
+    font-family: "Raleway", sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #d2d2d2;
+    letter-spacing: 0.2em;
+}
+
+.product-text p {
+    width: 80%;
+    height: 125px;
+    margin: 0 0 0 38px;
+    font-family: "Playfair Display", serif;
+    color: #8d8d8d;
+    line-height: 1.7em;
+    font-size: 15px;
+    font-weight: lighter;
+    overflow: hidden;
+}
+
+.product-price-btn {
+    height: 103px;
+    width: 327px;
+    margin-top: 17px;
     position: relative;
 }
-.product_card img {
-    width: 100%;
-    height: 300px;
-    display: block;
-    object-fit: cover;
-}
-.product_box h2 {
-    width: 100%;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    text-transform: capitalize;
-    cursor: pointer;
-    color: #323232;
-}
-.product_card span {
-    color: crimson;
-}
-.product_box p {
-    width: 100%;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    height: 70px;
-    overflow: hidden;
-    color: #323232;
-}
-.row_btn {
-    width: 100%;
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-}
-.row_btn a {
-    width: 50%;
-    text-align: center;
-    text-transform: uppercase;
-    color: white;
-    font-weight: 600;
-    letter-spacing: 2px;
-    padding: 6px;
-}
-#btn_buy {
-    background: #555;
-    margin-right: 5px;
-}
-#btn_view {
-    background: teal;
-    margin-left: 5px;
-}
-.product_card input {
+
+.product-price-btn p {
+    display: inline-block;
     position: absolute;
-    width: 25px;
-    height: 25px;
+    top: -13px;
+    height: 50px;
+    font-family: "Trocchi", serif;
+    margin: 0 0 0 38px;
+    font-size: 28px;
+    font-weight: lighter;
+    color: #474747;
+}
+
+span {
+    display: inline-block;
+    height: 50px;
+    font-family: "Suranna", serif;
+    font-size: 34px;
+}
+
+.product-price-btn button {
+    float: right;
+    display: inline-block;
+    height: 50px;
+    width: 176px;
+    margin: 0 40px 0 16px;
+    box-sizing: border-box;
+    border: transparent;
+    border-radius: 60px;
+    font-family: "Raleway", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #ffffff;
+    background-color: #9cebd5;
+    cursor: pointer;
+    outline: none;
+}
+
+.product-price-btn button:hover {
+    background-color: #79b0a1;
 }

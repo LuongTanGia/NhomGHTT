@@ -2,13 +2,22 @@
     position: relative;
     border: 1px solid #ccc;
     transform: scaleY(0.98);
+    height: 400px;
+}
+.cart img {
+    width: 200px;
+    height: 100%;
 }
 .amount span {
     color: crimson;
     padding: 0 20px;
 }
+.amount {
+    display: flex;
+    align-items: center;
+}
 .amount button {
-    width: 40px;
+    width: 20px;
     height: 40px;
     border: 1px solid #777;
 }
@@ -31,5 +40,5 @@
 .total h3 {
     color: crimson;
 }
-.paypal {
+.box-detail {
 }

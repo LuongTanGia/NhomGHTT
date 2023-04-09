@@ -101,7 +101,7 @@ function Cart() {
                     <div className="box-detail">
                         <h2>{product.title}</h2>
 
-                        <h3>$ {product.price * product.quantity}</h3>
+                        <h5>$ {product.price * product.quantity}</h5>
                         <p>{product.description}</p>
                         <p>{product.content}</p>
 

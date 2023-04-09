@@ -1,10 +1,12 @@
 .detail {
+    height: 600px;
     width: 100%;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    padding: 50px;
+    padding: 30px;
     font-size: 150%;
+    border-bottom: 2px solid #ccc;
 }
 .detail img {
     max-width: 400px;
@@ -35,6 +37,7 @@
 }
 .box-detail p {
     line-height: 1.5;
+    font-size: 15px;
     margin: 10px 0;
     opacity: 0.8;
 }
@@ -46,4 +49,7 @@
     display: inline-block;
     text-transform: uppercase;
     letter-spacing: 2px;
+}
+.related {
+    margin-top: 30px;
 }
