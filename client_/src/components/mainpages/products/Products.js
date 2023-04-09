@@ -5,6 +5,7 @@ import Loading from "../utils/loading/Loading";
 import axios from "axios";
 import Filters from "./Filters";
 import LoadMore from "./LoadMore";
+import Slider from "./Slider";
 
 function Products() {
     const state = useContext(GlobalState);
@@ -22,13 +23,11 @@ function Products() {
         setProducts([...products]);
     };
 
-    const deleteProduct = async (id, public_id) => {
+    const deleteProduct = async(id, public_id) => {
         try {
             setLoading(true);
             const destroyImg = axios.post(
-                "/api/destroy",
-                { public_id },
-                {
+                "/api/destroy", { public_id }, {
                     headers: { Authorization: token },
                 }
             );
@@ -61,44 +60,51 @@ function Products() {
     };
 
     if (loading)
-        return (
-            <div>
-                <Loading />
-            </div>
+        return ( <
+            div >
+            <
+            Loading / >
+            <
+            /div>
         );
-    return (
-        <>
-            <Filters />
+    return ( <
+        > {!isAdmin && < Slider / > }
 
-            {isAdmin && (
-                <div className="delete-all">
-                    <span>Select all</span>
-                    <input
-                        type="checkbox"
-                        checked={isCheck}
-                        onChange={checkAll}
+        <
+        Filters / >
+
+        {
+            isAdmin && ( <
+                div className = "delete-all" >
+                <
+                span > Select all < /span> <
+                input type = "checkbox"
+                checked = { isCheck }
+                onChange = { checkAll }
+                /> <
+                button onClick = { deleteAll } > Delete ALL < /button> <
+                /div>
+            )
+        }
+
+        <
+        div className = "products" > {
+            products.map((product) => {
+                return ( <
+                    ProductItem key = { product._id }
+                    product = { product }
+                    isAdmin = { isAdmin }
+                    deleteProduct = { deleteProduct }
+                    handleCheck = { handleCheck }
                     />
-                    <button onClick={deleteAll}>Delete ALL</button>
-                </div>
-            )}
+                );
+            })
+        } <
+        /div>
 
-            <div className="products">
-                {products.map((product) => {
-                    return (
-                        <ProductItem
-                            key={product._id}
-                            product={product}
-                            isAdmin={isAdmin}
-                            deleteProduct={deleteProduct}
-                            handleCheck={handleCheck}
-                        />
-                    );
-                })}
-            </div>
-
-            <LoadMore />
-            {products.length === 0 && <Loading />}
-        </>
+        <
+        LoadMore / > { products.length === 0 && < Loading / > } <
+        />
     );
 }
 

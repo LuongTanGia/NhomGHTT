@@ -1,11 +1,14 @@
 .detail {
+    height: 600px;
     width: 100%;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    padding: 50px;
+    padding: 30px;
     font-size: 150%;
+    border-bottom: 2px solid #ccc;
 }
+
 .detail img {
     max-width: 400px;
     width: 100%;
@@ -14,30 +17,37 @@
     object-fit: contain;
     display: block;
 }
+
 .box-detail {
     max-width: 500px;
     width: 100%;
     margin: 5px 20px;
 }
+
 .box-detail .row {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .box-detail h2 {
     text-transform: uppercase;
     color: darkblue;
     letter-spacing: 2px;
     font-weight: 2rem;
 }
+
 .box-detail h6 {
     text-transform: uppercase;
 }
+
 .box-detail p {
     line-height: 1.5;
+    font-size: 15px;
     margin: 10px 0;
     opacity: 0.8;
 }
+
 .box-detail .cart {
     background: #333;
     color: white;
@@ -46,4 +56,8 @@
     display: inline-block;
     text-transform: uppercase;
     letter-spacing: 2px;
+}
+
+.related {
+    margin-top: 30px;
 }
