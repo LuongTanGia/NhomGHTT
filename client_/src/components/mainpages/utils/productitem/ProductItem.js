@@ -16,7 +16,7 @@ function ProductItem({ product, isAdmin, deleteProduct, handleCheck }) {
                 <div class="product-info">
                     <div class="product-text">
                         <h1> {product.title} </h1>{" "}
-                        <h2> by studio and friends </h2>{" "}
+                        <h2> {product.product_id} </h2>{" "}
                         <p> {product.description} </p>{" "}
                     </div>{" "}
                     <div class="product-price-btn">

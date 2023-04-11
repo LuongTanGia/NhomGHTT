@@ -2,7 +2,7 @@
     position: relative;
     border: 1px solid #ccc;
     transform: scaleY(0.98);
-    height: 400px;
+    min-height: 450px;
 }
 
 .cart img {
@@ -47,4 +47,11 @@
     color: crimson;
 }
 
-.box-detail {}
+.box-detail {
+    overflow: hidden;
+}
+.box-detail p {
+    margin-top: 20px;
+    overflow: hidden;
+    height: 100px;
+}

@@ -236,7 +236,6 @@ function CreateProduct() {
                         ))}
                     </select>
                 </div>
-
                 <button type="submit">{onEdit ? "Update" : "Create"}</button>
             </form>
         </div>

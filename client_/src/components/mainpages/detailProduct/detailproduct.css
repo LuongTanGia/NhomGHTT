@@ -48,7 +48,7 @@
     opacity: 0.8;
 }
 
-.box-detail .cart {
+.box-detail .carts {
     background: #333;
     color: white;
     margin-top: 10px;
@@ -60,4 +60,10 @@
 
 .related {
     margin-top: 30px;
+}
+.carts {
+    margin-top: -20px;
+    position: relative;
+    border: 1px solid #ccc;
+    transform: scaleY(0.98);
 }

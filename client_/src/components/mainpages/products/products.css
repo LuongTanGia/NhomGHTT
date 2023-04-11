@@ -6,7 +6,6 @@
     margin: 20px 0;
 }
 
-
 /* ----------------- Product Item ------------*/
 
 @import url("../utils/productitem/productitem.css");
@@ -34,7 +33,6 @@
     color: crimson;
     text-transform: uppercase;
 }
-
 
 /* ------------ Filters Menu ----------------- */
 
@@ -86,7 +84,6 @@ input {
     padding: 0 5px;
 }
 
-
 /* -------------------- Load More --------------- */
 
 .load_more {
@@ -99,7 +96,6 @@ input {
     border: 1px solid #555;
     text-transform: capitalize;
 }
-
 
 /* ---------------------- Slider ------------------------- */
 
@@ -187,7 +183,8 @@ input {
 #myCarousel {
     position: relative;
     z-index: 1;
-    background: url(https://img4.thuthuatphanmem.vn/uploads/2020/12/25/anh-bia-cac-kieu-my-pham-tong-tim_094445341.jpg) center center no-repeat;
+    background: url(https://img4.thuthuatphanmem.vn/uploads/2020/12/25/anh-bia-cac-kieu-my-pham-tong-tim_094445341.jpg)
+        center center no-repeat;
     background-size: cover;
 }
 

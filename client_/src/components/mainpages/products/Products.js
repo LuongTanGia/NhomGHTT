@@ -80,7 +80,7 @@ function Products() {
                         checked={isCheck}
                         onChange={checkAll}
                     />{" "}
-                    <button onClick={deleteAll}> Delete ALL </button>{" "}
+                    <button onClick={deleteAll}> Delete </button>{" "}
                 </div>
             )}
             <div className="products">
